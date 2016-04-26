@@ -760,6 +760,11 @@ func (cc *ClientConn) writeHeaders(streamID uint32, endStream bool, hdrs []byte)
 				BlockFragment: chunk,
 				EndStream:     endStream,
 				EndHeaders:    endHeaders,
+				Priority: PriorityParam{
+					StreamDep: 0,
+					Exclusive: false,
+					Weight:    255,
+				},
 			})
 			first = false
 		} else {
